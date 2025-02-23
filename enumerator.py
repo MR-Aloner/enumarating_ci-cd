@@ -2,7 +2,9 @@ import gitlab
 import uuid
 
 # Create a Gitlab connection
-gl = gitlab.Gitlab("http://gitlab.tryhackme.loc/", private_token='REPLACE_ME') #replace the private token with the github api token for authentication purpose
+#Replace the url for the website to enumerate the public repos
+#replace the private token with the github api token for authentication purpose
+gl = gitlab.Gitlab("http://gitlab.tryhackme.loc/", private_token='REPLACE_ME')
 gl.auth()
 
 # Get all Gitlab projects

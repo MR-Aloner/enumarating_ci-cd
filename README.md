@@ -51,6 +51,7 @@ Let say if the main is protected, then we cant do commeit and merge to the main 
 then we can use the dev branch .gitlab-ci.yml file to extract the prod api key.
 
 Replace the .gitlab-ci.yml file in the dev as below, the below command might create the key in tmp/key directory of dev server, while commiting the changes look for the pipelines and jobs wether running or pending and manual. If its manual run the job manually, it might triger the script to run.
+
 =======================================
 
   stages:

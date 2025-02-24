@@ -7,7 +7,7 @@ Donot change the file name "enumerator.py"
 Note: Make sure to install the Gitlab pip package using pip3 install python-gitlab==3.15.0
 
 =======================================
-replace the below lines in the .gitlab-ci.yml file to get the reverse shell
+replace the below lines in the .gitlab-ci.yml  file to get the reverse shell
 
 pipeline {
     agent any
